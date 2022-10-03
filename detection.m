@@ -34,11 +34,11 @@ G=(Gx.*Gx+Gy.*Gy).^0.5; %Norme
 figure,imshow(G)
 colormap(flipud(gray(256)))  %On a une image colorée en fonction de la norme du gradient
 
-%% Calcul de la covariance 
+%% Calcul de la covariance sur un carré de taille 36 (-18,18) pour ça il faut avoir la poition initiale des coins
 Ix=L.*Gx;
 Iy=L.*Gy;
 Cxx=Ix.*Ix.*G;
 Cxy=Ix.*Iy.*G;
 Cyy=Iy.*Iy.*G;
 C=[Cxx Cxy;Cxy Cyy];
-D=det(C)-0.05*trace(C)*trace(C);
+D=det(C)-0.05*trace(C)*trace(C); 
