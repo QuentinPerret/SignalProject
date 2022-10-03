@@ -1,8 +1,6 @@
 video=VideoReader("Video_Sujet.mp4");
 nbFrames=video.numFrames;
-
-%% Dossier des frames
-
+% 
 %création d'un dossier pour stocker chaque image
 workingDir="H://Cours//2A//C7//Traitement d'images//SignalProject";
 mkdir(workingDir)
@@ -16,5 +14,3 @@ while hasFrame(video)
     imwrite(img,fullname)    % Ecrit dans un format JPG 
     i = i+1;
 end
-
-%% Gradient 
