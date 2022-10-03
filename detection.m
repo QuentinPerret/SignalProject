@@ -17,7 +17,7 @@ while hasFrame(video)
     i = i+1;
 end
 
-%% niveau de gris
+%% niveau de gris (peut être faut-il appliquer un filtre gaussien pour enlever le bruit)
 first_image=double(imread('images\001.jpg'));
 R=first_image(:,:,1); %on récupère les couleurs
 G=first_image(:,:,2);
@@ -32,4 +32,13 @@ Gx=conv2(L,Hx,'same'); %Gradient selon x
 Gy=conv2(L,Hy,'same');
 G=(Gx.*Gx+Gy.*Gy).^0.5; %Norme
 figure,imshow(G)
-colormap(flipud(gray(256)))
+colormap(flipud(gray(256)))  %On a une image colorée en fonction de la norme du gradient
+
+%% Calcul de la covariance 
+Ix=L.*Gx;
+Iy=L.*Gy;
+Cxx=Ix.*Ix.*G;
+Cxy=Ix.*Iy.*G;
+Cyy=Iy.*Iy.*G;
+C=[Cxx Cxy;Cxy Cyy];
+D=det(C)-0.05*trace(C)*trace(C);
