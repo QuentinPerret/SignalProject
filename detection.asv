@@ -1,6 +1,8 @@
 video=VideoReader("Video_Sujet.mp4");
 nbFrames=video.numFrames;
-% 
+
+%% Dossier des frames
+
 %création d'un dossier pour stocker chaque image
 workingDir="H://Cours//2A//C7//Traitement d'images//SignalProject";
 mkdir(workingDir)
@@ -14,3 +16,20 @@ while hasFrame(video)
     imwrite(img,fullname)    % Ecrit dans un format JPG 
     i = i+1;
 end
+
+%% niveau de gris
+first_image=double(imread('images\001.jpg'));
+R=first_image(:,:,1); %on récupère les coul
+G=first_image(:,:,2);
+B=first_image(:,:,3);
+L=(R+G+B)/3; %luminance
+figure,imshow(uint8(L));
+sigma=2;
+[X,Y]=meshgrid(-floor(sigma)*3+1,floor(sigma)*3+1);
+Hx=-X.*exp(-(X.^2+Y.^2)/(2*sigma^2));
+Hy=-Y.*exp(-(X.^2+Y.^2)/(2*sigma^2));
+Gx=conv2(L,Hx,'same');
+Gy=conv2(L,Hy,'same');
+G=(Gx.*Gx+Gy.*Gy).^0.5;
+figure,imshow(G)
+colormap(flipud(gray(256)))
