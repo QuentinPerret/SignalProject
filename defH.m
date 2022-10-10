@@ -1,4 +1,4 @@
-function new_H = defH(X1,X2)
+function H = defH(X1,X2)
     tx = size(X1)(1); %Nombre de point homographie
 
     %Initialisation matrice A

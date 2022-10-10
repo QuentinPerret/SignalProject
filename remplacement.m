@@ -12,7 +12,7 @@ Xim  = [x1 ; y1;]
 new_H=defH(Xvid,Xim);
 
 %Réalisation de l'homographie
-truc=calculetousPoints(taille_im,new_H);
+taille_v = size(img);
+truc=calculetousPoints(taille_v,new_H);
 
-%
 end
