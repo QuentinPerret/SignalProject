@@ -1,25 +1,35 @@
-function new_H = defH(x1,y1,x2,y2)
-    mat=zeros(8,8);
-    for j=0:3
-        mat(2*j+1,1)=x1(j+1);
-        mat(2*j+1,2)=y1(j+1);
+function new_H = defH(X1,X2)
+    tx = size(X1)(1); %Nombre de point homographie
+
+    %Initialisation matrice A
+    mat=zeros(2*tx,2*tx);
+    for j=0:tx-1
+        mat(2*j+1,1)=X1(1,j+1);
+        mat(2*j+1,2)=X1(2,j+1);
         mat(2*j+1,3)=1;
         mat(2*j+1,4)=0;
         mat(2*j+1,5)=0;
         mat(2*j+1,6)=0;
-        mat(2*j+1,7)= -x1(j+1)*x2(j+1);
-        mat(2*j+1,8)=-y1(j+1)*x2(j+1);
+        mat(2*j+1,7)=-X1(1,j+1)*X2(1,j+1);
+        mat(2*j+1,8)=-X1(2,j+1)*X2(1,j+1);
+
         mat(2*j+2,1)=0;
         mat(2*j+2,2)=0;
         mat(2*j+2,3)=0;
-        mat(2*j+2,4)=x1(j+1);
-        mat(2*j+2,5)=y1(j+1);
+        mat(2*j+2,4)=X1(1,j+1);
+        mat(2*j+2,5)=X1(2,j+1);
         mat(2*j+2,6)=1;
-        mat(2*j+2,7)=-x1(j+1)*y2(j+1);
-        mat(2*j+2,8)=-y1(j+1)*y2(j+1);
+        mat(2*j+2,7)=-X1(1,j+1)*X2(2,j+1);
+        mat(2*j+2,8)=-X1(2,j+1)*X2(2,j+1);
     end
-    B=[x2(1);y2(1);x2(2);y2(2);x2(3);y2(3);x2(4);y2(4)];
-    H=mat\B;
-    tH=H';
-    new_H=[tH(1:3) ; tH(4:6);[tH(7:8),1]];
+
+    %Initialisation de la matrice B
+    B  = zeros(tx,1)
+    for i = 0:tx-1
+        B(2*i+1,1) = X2(1,i)
+        B(2*i+2,1) = X2(2,i)
+
+    resH=mat\B; %Réasolution de A*H = B
+    tH=resH';
+    H=[tH(1:3) ; tH(4:6);[tH(7:8),1]];
 end
