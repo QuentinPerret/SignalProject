@@ -1,7 +1,3 @@
-function [B] = calcule1point(A,H)
-    B = A*H;
-end
-
 function new_H = defH(x1,y1,x2,y2)
     mat=zeros(8,8);
     for j=0:3

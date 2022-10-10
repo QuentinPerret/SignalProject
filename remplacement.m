@@ -12,7 +12,7 @@ i=imread("meme.jpg");
 taille_im=size(i,1:2);
 x1=[0,0,taille_im(2),taille_im(2)];
 y1=[0,taille_im(1),taille_im(1),0];
-
+new_H=defH(x1,x2,y1,y2);
 
 %truc=zeros(taille_im(1),taille_im(2));
 %for k=1:taille_im(1)
