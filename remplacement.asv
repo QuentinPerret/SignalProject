@@ -12,6 +12,3 @@ new_H=defH(x1,y1,x2,y2);
 
 %Réalisation de l'homographie
 truc=calculetousPoints(taille_im,new_H);
-
-%
-end
