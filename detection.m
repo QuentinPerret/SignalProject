@@ -5,7 +5,9 @@ sigma1=5;
 sigma2=3;
 
 
-%On récupère les 4premiers coins :
+%On ouvre un writer pour pouvoir suivre les coins
+writerObj=VideoWriter('VideoAvecCoins.avi');
+open(writerObj);
 
 
 %Traitement des images
@@ -13,32 +15,25 @@ i=1;
 while hasFrame(video)
     if i==1
         figure,imshow(Image);
+        H=HarrisMultiEchelle(sigma1,sigma2,Image);
         coinImage1=ginput(4);
         coinImage2=coinImage1;
-        coinI=detectCoin(H,coinImage1,coinImage2);
+        tmp=detectCoin(H,coinImage1,coinImage2);
+        VerifCoin(Image,tmp,writerObj);
     elseif i==2
-        
+        VerifCoin(Image,tmp,writerObj);
     else
-        Imagei=read(video,i);
-        ImageiGris=CouleurToGris(Imagei);
+        Imagei=CouleurToGris(read(video,i));
+        H=HarrisMultiEchelle(sigma1,sigma2,Imagei);
         tmp=coinImage2;
+        coinImage2=detectCoin(Imagei,coinImage1,coinImage2);
+        coinImage1=tmp;
+        VerifCoin(Imagei,coinImage2,writerObj);
     end
-    
-
-    %Harris
-    H=HarrisMultiEchelle(sigma1,sigma2,Imagei);
-
-    %Coins
-    coinsI=detectCoin(H,coinImage1,coinImage2);
     i=i+1;
 end
+close(writerObj);
 
-
-%%
-writerObject=VideoWriter('Video_Sujetavi');
-open(writerObject);
-DetectTousCoins(detectMulti,writerObject);
-close(writerObject);
 
 
 
