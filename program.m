@@ -8,6 +8,6 @@ imshow(frame)
 [x,y]=ginput(4);
 x2=fix(x); 
 y2=fix(y);
-Xvid  = [x2 ; y2;]
+Xvid  = [[x2';]; [y2';];];
 
-remplacement(Xvid , Xim);
+remplacement(Xvid);
