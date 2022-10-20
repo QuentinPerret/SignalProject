@@ -11,7 +11,7 @@ posCentre=floor((3.*pos2 - pos1)./2);
 
 % Recherche de la valeur maximale du detecteur de Harris dans cette
 % fenêtre
-maxHarris = D(posCentre(2), posCentre(1));
+maxHarris = detecteur(posCentre(2), posCentre(1));
 
 for i=posCentre(1)-((W - 1)/2):posCentre(1)+((W-1)/2)
     for j=posCentre(2)-((W-1)/2):posCentre(2)+((W-1)/2)

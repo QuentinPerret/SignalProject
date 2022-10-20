@@ -1,8 +1,11 @@
-function [detecteur]=Harris(sigma,Ix,Iy)
+function [detecteur]=Harris(sigma,image)
 [X,Y]=meshgrid(floor(-sigma*3)+1:ceil(sigma*3)+1);
 G_sigmaC=exp(-(X*X+Y*Y)/(2*sigma*sigma));
-
+[Ix,Iy]=Canny(image);
 Cxx=conv2(Ix.*Ix,G_sigmaC,'same');
 Cyy=conv2(Iy.*Iy,G_sigmaC,'same');
 Cxy=conv2(Ix.*Iy,G_sigmaC,'same');
-detecteur=Cxx.*Cyy-Cxy.*Cxy-0.05.*(Cxx+Cyy);
+det=Cxx.*Cyy-Cxy.*Cxy;
+Tr=Cxx+Cyy;
+k=0.05;
+detecteur=det-k*Tr.^2;

@@ -1,21 +1,44 @@
 video=VideoReader("Video_Sujet.mp4");
-DecouperVideo(video);
-%% niveau de gris (peut être faut-il appliquer un filtre gaussien pour enlever le bruit)
-image=double(imread('images\001.jpg'));
-imageGris=uint8(CouleurToGris(image));
-[Ix,Iy]=Canny(imageGris);
+Image=CouleurToGris(read(video,1));
 
-G=(Ix.*Ix+Iy.*Iy).^0.5; %Norme
-figure,imshow([Ix,Iy,G]);
-%figure,imshow(Iy, [0 50])
+sigma1=5;
+sigma2=3;
 
-  %On a une image colorée en fonction de la norme du gradient
 
-%% Detecteur de Harris
-detecteur1=Harris(3,Ix,Iy);
-detecteur2=Harris(5,Ix,Iy);
-detectMulti=HarrisMultiEchelle(detecteur1,detecteur2);
+%On récupère les 4premiers coins :
 
-figure,imshow([detecteur1,detecteur2,detectMulti]);
 
-%% Trajectographie Linéaire 
+%Traitement des images
+i=1;
+while hasFrame(video)
+    if i==1
+        figure,imshow(Image);
+        coinImage1=ginput(4);
+        coinImage2=coinImage1;
+        coinI=detectCoin(H,coinImage1,coinImage2);
+    elseif i==2
+        
+    else
+        Imagei=read(video,i);
+        ImageiGris=CouleurToGris(Imagei);
+        tmp=coinImage2;
+    end
+    
+
+    %Harris
+    H=HarrisMultiEchelle(sigma1,sigma2,Imagei);
+
+    %Coins
+    coinsI=detectCoin(H,coinImage1,coinImage2);
+    i=i+1;
+end
+
+
+%%
+writerObject=VideoWriter('Video_Sujetavi');
+open(writerObject);
+DetectTousCoins(detectMulti,writerObject);
+close(writerObject);
+
+
+
