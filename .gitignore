@@ -51,6 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-*.mp4
 *.asv
+*.mp4
 
