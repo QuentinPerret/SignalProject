@@ -1,4 +1,4 @@
-function posMax = ValMaxHarris(detecteur, posAvant,posEncoreAvant)
+function posMax = ValMaxHarris(detecteur, posEncoreAvant,posAvant)
 
 W=37; %taille de la fenetre 
 
@@ -10,7 +10,8 @@ posCentre=floor((3.*posAvant - posEncoreAvant)./2);
 
 % Recherche de la valeur maximale du detecteur de Harris dans cette
 % fenêtre
-maxHarris = detecteur(posCentre(1), posCentre(2));
+maxHarris = detecteur(posCentre(2), posCentre(1));
+posMax=posEncoreAvant;
 
 for i=posCentre(1)-((W - 1)/2):posCentre(1)+((W-1)/2)
     for j=posCentre(2)-((W-1)/2):posCentre(2)+((W-1)/2)
