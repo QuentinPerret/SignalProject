@@ -1,11 +1,11 @@
 clear
 close all
 
-%% Récupération première image de la vidéo
-video=VideoReader('video.mp4'); %ouverture vidéo
-% Nombre d'images dans la vidéo
-nbFrame=video.NumFrames; 
-image1 = read(video, 1);
+ % Récupération première image de la vidéo
+ video=VideoReader('video.mp4'); %ouverture vidéo
+ %Nombre d'images dans la vidéo
+ nbFrame=video.NumFrames; 
+ image1 = read(video, 1);
 
 %% Définition variable coins
 coinsPreviousFrame = [1 1; 1 1; 1 1; 1 1];
@@ -21,7 +21,7 @@ y2 = [1 1 taille(1) taille(1)]';
 
 writerObj = VideoWriter('out.mp4');
  
-for i = 1:nbFrame
+for i = 40:nbFrame
     close all
     coinsPreviousFrame = coinsFrame;
     img = double(read(video, i));
