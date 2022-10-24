@@ -2,8 +2,8 @@ video=VideoReader("Video_Sujet.mp4");
 Image=CouleurToGris(read(video,1));
 
 sigma1=3;
-sigma2=2;
-sigmaG=5;
+sigma2=5;
+sigmaG=2;
 
 
 %On ouvre un writer pour pouvoir suivre les coins
@@ -26,6 +26,7 @@ while hasFrame(video)
     else
         Imagei=CouleurToGris(read(video,i));
         H=HarrisMultiEchelle(sigma1,sigma2,sigmaG,Imagei);
+        %imshow(H);
         tmp=coinImage2;
         coinImage2=detectCoin(Imagei,coinImage1,coinImage2);
         coinImage1=tmp;
@@ -34,6 +35,14 @@ while hasFrame(video)
     i=i+1;
 end
 close(writerObj);
+
+%% 
+minH=min(H);
+maxH=max(H);
+figure,imshow(H,[-50 50])
+colorbar;
+%%
+[X,Y]=meshgrid(-ceil(sigma1*3):ceil(sigma1*3));
 
 
 
