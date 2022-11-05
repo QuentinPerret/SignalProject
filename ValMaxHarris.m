@@ -15,7 +15,8 @@ posMax=posCentre;
 
 for i=posCentre(1)-((W - 1)/2):posCentre(1)+((W-1)/2)
     for j=posCentre(2)-((W-1)/2):posCentre(2)+((W-1)/2)
-        if maxHarris < detecteur(j,i) && detecteur(j,i)>50
+        %if maxHarris < detecteur(j,i) && detecteur(j,i)>50
+        if maxHarris < detecteur(j,i)
             maxHarris = detecteur(j,i);
             posMax = [i j];
         end    
