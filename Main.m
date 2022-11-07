@@ -2,13 +2,17 @@ clear
 close all
 
 %% Récupération première image de la vidéo
-video=VideoReader('video.mp4'); %ouverture vidéo
+video=VideoReader('Video_Sujet.mp4'); %ouverture vidéo
 % Nombre d'images dans la vidéo
 nbFrame=video.NumFrames; 
 image1 = read(video, 1);
 
+sigma1=3;
+sigma2=5;
+sigmaG=2;
+
 %% Définition variable coins
-coinsPreviousFrame = [1 1; 1 1; 1 1; 1 1];
+coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767];%coinsImg1
 coinsFrame = coinsPreviousFrame;
 
 %% Image à remplacer
@@ -22,19 +26,26 @@ y2 = [1 1 taille(1) taille(1)]';
 writerObj = VideoWriter('out.mp4');
  
 for i = 1:nbFrame
-    close all
-    coinsPreviousFrame = coinsFrame;
+
     img = double(read(video, i));
-    image1 = read(video, i);
-    imshow(image1);
-    [x,y]=ginput(4);
-    % Toutes les abscisses
-    x1=fix(x); 
-    % Toutes les ordonées
-    y1=fix(y);
-    coinsFrame = [x1 ,y1];
+    
+    %--- Passage en couleurs indexées
+    I=CouleurToGris(img);
+    
+    %--- Detecteur Harris
+    HarrisFinal = HarrisMultiEchelle(sigma1, sigma2, sigmaG,I) ;
+    
+    %--- MAJ des coins
+    tmp = coinsFrame;
+    coinsFrame = detectCoin(HarrisFinal, coinsPreviousFrame, coinsFrame);
+    coinsPreviousFrame = tmp;
+    
+    %--- VERIFICATION
+    %VerifCoin(img, coinsFrame,writerObj);
 
     %% Homographie
+    x1 = coinsFrame(:,1);
+    y1 = coinsFrame(:,2);
     X = Homographie(x2,y2,x1,y1,4);
     
     %% Remplacement
