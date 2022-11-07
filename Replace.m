@@ -15,7 +15,8 @@ function [frame] = Replace(frame,img,H)
     y1 = round(NewPosHom(2,:) ./ NewPosHom(3,:));
 
     %on récupère les indices correspond à la zone de la feuille
-    A = (x1>0).*(x1<dimIncr(2)).*(y1>0).*(y1<dimIncr(1)).*detectionMain(:)'';
+    mainDetec = detectionMain(frame);
+    A = (x1>0).*(x1<dimIncr(2)).*(y1>0).*(y1<dimIncr(1)).*mainDetec(:)';
     pos = find(A);
     x2 = x2(pos); 
     y2 = y2(pos);

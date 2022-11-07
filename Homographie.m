@@ -1,14 +1,17 @@
 function [H] = Homographie (x1,y1,x2,y2,nbpts)
    
     A = zeros(nbpts*2,8);
-    
+    B = zeros(nbpts*2);
     
     for i = 1:nbpts
         A(i*2-1,:) = [x2(i) y2(i) 1 0 0 0 (-x2(i)*x1(i)) (-x1(i)*y2(i))];
         A(i*2,:) = [0 0 0 x2(i) y2(i) 1 (-x2(i)*y1(i)) (-y2(i)*y1(i))];        
     end
     
-    B = [x1(1);y1(1);x1(2);y1(2);x1(3);y1(3);x1(4);y1(4)];
+    for i = 1:nbpts
+        B(i*2-1) = x1(i);
+        B(i*2) = y1(i);
+    end
     
     X=A\B;
     
