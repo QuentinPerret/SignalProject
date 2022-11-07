@@ -35,6 +35,7 @@
 #Other ban files
 *.pdf
 *.mp4
+*.jpg
 *.jpeg
 *.pdf
 # Debug files
