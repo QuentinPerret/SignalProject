@@ -12,14 +12,16 @@ sigma2=5;
 sigmaG=2;
 
 %% Définition variable coins
-coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767];%coinsImg1
+%imshow(image1);
+%[x,y] = ginput(1);
+coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486];%coinsImg1
 coinsFrame = coinsPreviousFrame;
 
 %% Image à remplacer
 meme=imread('meme.jpg');
 taille=size(meme);
-x2 = [1 taille(2) taille(2) 1]';
-y2 = [1 1 taille(1) taille(1)]';
+x2 = [1 taille(2) taille(2) 1 , fix(taille(2)/2)]';
+y2 = [1 1 taille(1) taille(1) fix(taille(1)/2)]';
 
 %% Traitement de la vidéo
 
@@ -46,14 +48,14 @@ for i = 1:nbFrame
     %% Homographie
     x1 = coinsFrame(:,1);
     y1 = coinsFrame(:,2);
-    X = Homographie(x2,y2,x1,y1,4);
+    X = Homographie(x2,y2,x1,y1,5);
     
     %% Remplacement
     newim = Replace(img,meme,X);
     
     % VERIFICATION
     open(writerObj);
-    Verification(newim, coinsFrame, 4, writerObj);
+    Verification(newim, coinsFrame, 5, writerObj);
 end
 % Enregistrer la verif
 close(writerObj);
