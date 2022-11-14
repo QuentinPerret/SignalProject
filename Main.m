@@ -14,7 +14,7 @@ sigmaG=2;
 %% Définition variable coins
 %imshow(image1);
 %[x,y] = ginput(1);
-coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486];%coinsImg1
+coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486; 992 435];%coinsImg1
 coinsFrame = coinsPreviousFrame;
 
 %% Image à remplacer
@@ -55,16 +55,13 @@ for i = 1:nbFrame
     
     % VERIFICATION
     open(writerObj);
-    Verification(newim, coinsFrame, 5, writerObj);
 
-    %% Ajout de la structure 3D
-    % Projection 3D
-
-    % Création de la structure 3D
-
-    % Ajout de la structure 3D
-
-    %Verification
+    %VerifCoin(img,coinsFrame,video);
+    Verification(newim, coinsFrame, 6, writerObj);
 end
 % Enregistrer la verif
 close(writerObj);
+
+%% test 
+
+Igloo(50,50);
