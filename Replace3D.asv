@@ -1,0 +1,31 @@
+function [frame] = Replace3D(frame,points,P)
+    
+    dimVid = size(frame);
+    dimPts = size(points);
+    pts3D = zeros(dimPts(1),2);
+
+    for i=1:dimPts(1)
+        X1=[points(i,1);points(i,2);points(i,3);1];
+        X2=P*X1;
+        s=X1(3);
+        X2=round(X2./s);
+        pts3D(i,1)=X2(1);
+        pts3D(i,2)=X2(2);
+    end
+
+    
+    %on récupère les indices correspond à la zone de la feuille
+    mainDetec = detectionMain(frame);
+    A = (x1>0).*(x1<dimIncr(2)).*(y1>0).*(y1<dimIncr(1)).*mainDetec(:)';
+    pos = find(A);
+    x2 = x2(pos); 
+    y2 = y2(pos);
+    z2 = z2(pos);
+    x1 = x1(pos);
+    y1 = y1(pos);
+    z1 = z1(pos);
+
+    %faire appel à une fonction tracer 
+
+return ;
+end

@@ -56,6 +56,15 @@ for i = 1:nbFrame
     % VERIFICATION
     open(writerObj);
     Verification(newim, coinsFrame, 5, writerObj);
+
+    %% Ajout de la structure 3D
+    % Projection 3D
+
+    % Création de la structure 3D
+
+    % Ajout de la structure 3D
+
+    %Verification
 end
 % Enregistrer la verif
 close(writerObj);
