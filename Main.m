@@ -60,3 +60,7 @@ for i = 1:nbFrame
 end
 % Enregistrer la verif
 close(writerObj);
+
+%% test 
+
+Igloo(50,50);

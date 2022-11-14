@@ -12,17 +12,16 @@ sigma2=5;
 sigmaG=2;
 
 %% Définition variable coins
-%coinsPreviousFrame =  [685 412; 630 766; 1430 583; 1339 241; 921 475; 1024 403];%coinsImg1
+%imshow(image1);
+%[x,y] = ginput(1);
+coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486; 992 435];%coinsImg1
 coinsFrame = coinsPreviousFrame;
 
 %% Image à remplacer
 meme=imread('meme.jpg');
 taille=size(meme);
-x2 = [1 taille(2) taille(2) 1]';
-y2 = [1 1 taille(1) taille(1)]';
-
-%% Feuille en 3 dimensions 
-P=[0 0 0; 0 1 0; 1 1 0; 1 0 0; 3/8 1/2 0.2 ; 11/20 7/16 0.3];
+x2 = [1 taille(2) taille(2) 1 , fix(taille(2)/2)]';
+y2 = [1 1 taille(1) taille(1) fix(taille(1)/2)]';
 
 %% Traitement de la vidéo
 
@@ -49,14 +48,19 @@ for i = 1:nbFrame
     %% Homographie
     x1 = coinsFrame(:,1);
     y1 = coinsFrame(:,2);
-    X = Homographie(x2,y2,x1,y1,6);
+    X = Homographie(x2,y2,x1,y1,5);
     
     %% Remplacement
     newim = Replace(img,meme,X);
     
     % VERIFICATION
     open(writerObj);
-    Verification(newim, coinsFrame, 4, writerObj);
+    %VerifCoin(img,coinsFrame,video);
+    Verification(newim, coinsFrame, 6, writerObj);
 end
 % Enregistrer la verif
 close(writerObj);
+
+%% test 
+
+Igloo(50,50);
