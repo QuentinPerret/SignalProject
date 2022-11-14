@@ -58,6 +58,14 @@ for i = 1:nbFrame
 
     %VerifCoin(img,coinsFrame,video);
     Verification(newim, coinsFrame, 6, writerObj);
+    %%Ajout  de la structure 3D
+
+    %Projection 3D
+    [x,y,z]=Igloo(50,50);
+    P=Projection3D(x1,y1,x,y,z,6);
+
+    %Ajout de la structure
+    Replace3D(newim,coordonnees,P,50,50);
 end
 % Enregistrer la verif
 close(writerObj);
