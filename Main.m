@@ -16,6 +16,8 @@ sigmaG=2;
 %[x,y] = ginput(1);
 coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486; 992 435];%coinsImg1
 coinsFrame = coinsPreviousFrame;
+%Feuille en 3 dimensions 
+P3D=[0 0 0; 0 1 0; 1 1 0; 1 0 0; 3/8 1/2 0.2 ; 1/2 1/4 0.3];
 
 %% Image à remplacer
 meme=imread('meme.jpg');
@@ -62,10 +64,10 @@ for i = 1:nbFrame
 
     %Projection 3D
     [x,y,z]=Igloo(50,50);
-    P=Projection3D(x1,y1,x,y,z,6);
+    P=Projection3D(x1,y1,P3D,6);
 
     %Ajout de la structure
-    Replace3D(newim,coordonnees,P,50,50);
+    Replace3D(newim,x,y,z,P,50,50);
 end
 % Enregistrer la verif
 close(writerObj);
