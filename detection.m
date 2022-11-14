@@ -9,12 +9,12 @@ nb=video.NumFrames;
 %On ouvre un writer pour pouvoir suivre les coins
 writerObj=VideoWriter('VideoAvecCoins.avi');
 open(writerObj);
-figure,imshow(read(video,1));
-coinsImg1=ginput(6);
-%coinsImg1 = [685 412; 630 766; 1430 583; 1339 241; 921 475; 1024 403];
+%figure,imshow(read(video,1));
+%point=ginput(1);
+coinsImg1 = [685 412; 630 766; 1430 583; 1339 241; 921 475; 1024 403; 1130 313];
 coinsImg2 = coinsImg1;
 %Feuille en 3 dimensions 
-P=[0 0 0; 0 1 0; 1 1 0; 1 0 0; 3/8 1/2 0.2 ; 11/20 7/16 0.3];
+P=[0 0 0; 0 1 0; 1 1 0; 1 0 0; 3/8 1/2 0.2 ; 1/2 1/4 0.3];
 
 for i = 1:nb
   
