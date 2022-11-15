@@ -1,21 +1,22 @@
-function [frame] = Replace3D(frame,x,y,z,P,hauteurGrille,largeurGrille)
+function [frame] = Replace3D(frame,pointsARelier,P,hauteurGrille,largeurGrille)
     
     %dimVid = size(frame);
     
-    pts3D = zeros(hauteurGrille,largeurGrille);
+    pts3D = zeros(size(pointsARelier,1),2);
 
-    for i=1:hauteurGrille
-        for j=1:largeurGrille
-        X1=[x(i,j);y(i,j);z(i,j);1];
+    for i=1:size(pointsARelier,1)
+        X1=[pointsARelier(i,1);pointsARelier(i,2);pointsARelier(i,3);1];
         X2=P*X1;
         s=X2(3);
-        X2=round(X2./s);
-        pts3D(i,j)=X2(1);
-        pts3D(i,j)=X2(2);
+        x2=round(X2(1)/s);
+        y2=round(X2(2)/s);
+        if x2>0 && x2<size(frame,2) && y2>0 && y2<size(frame,1)
+        pts3D(i,1)=x2;
+        pts3D(i,2)=y2;
         end
     end
 
-    %frame=Tracer(frame,pts3D,hauteurGrille,largeurGrille);
+    frame=Tracer(frame,pts3D,hauteurGrille,largeurGrille);
     %faire appel à une fonction tracer(attention il faut mettre la
     %détection MAIN)
 

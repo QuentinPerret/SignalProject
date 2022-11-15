@@ -1,5 +1,6 @@
 function [frame] = Tracer(frame,pts3D,hauteurGrille,largeurGrille)
 
+dimVid=size(frame);
 for j=1:largeurGrille-1
     for i=1:hauteurGrille-2
         x1=pts3D(i,1);
