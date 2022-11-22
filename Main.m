@@ -21,8 +21,8 @@ coinsFrame = coinsPreviousFrame;
 %% Image à remplacer
 meme=imread('meme.jpg');
 taille=size(meme);
-x2 = [1 taille(2) taille(2) 1 , fix(taille(2)/2)]';
-y2 = [1 1 taille(1) taille(1) fix(taille(1)/2)]';
+x2 = [1 taille(2) taille(2) 1 ]';
+y2 = [1 1 taille(1) taille(1) ]';
 %Feuille en 3 dimensions 
 P3D=[0 0 0; 0 taille(1) 0; taille(2) taille(1) 0; taille(2) 0 0; 3/8*taille(2) 1/2*taille(1) 0.2 ; 1/2*taille(2) 1/4*taille(1) 0.3];
 
@@ -51,7 +51,7 @@ for i = 1:nbFrame
     %% Homographie
     x1 = coinsFrame(:,1);
     y1 = coinsFrame(:,2);
-    X = Homographie(x2,y2,x1,y1,5);
+    X = Homographie(x2,y2,x1,y1,4);
     
     %% Remplacement
     newim = Replace(img,meme,X);
@@ -59,9 +59,9 @@ for i = 1:nbFrame
     % VERIFICATION
     open(writerObj);
 
-    %VerifCoin(img,coinsFrame,video);
-    Verification(newim, coinsFrame, 6, writerObj);
-    %%Ajout  de la structure 3D
+ 
+   
+    %% Ajout  de la structure 3D
 
     %Projection 3D
     [x,y,z]=Igloo(50,50);
@@ -69,11 +69,10 @@ for i = 1:nbFrame
     P=Projection3D(x1,y1,P3D,6);
 
     %Ajout de la structure
-    Replace3D(newim,pointsARelier,P,50,50);
+    im=Replace3D(newim,pointsARelier,P);
+    %% Verif
+    Verification(im, coinsFrame, 6, writerObj);
 end
 % Enregistrer la verif
 close(writerObj);
 
-%% test 
-
-Igloo(50,50);
