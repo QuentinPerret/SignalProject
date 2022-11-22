@@ -5,8 +5,10 @@ k=1;
 while k<dimPts(1) %les points sont déjà classés dans pts3D donc on trace un segment deux à deux
     pt1=pts3D(k,:);
     pt2=pts3D(k+1,:);
+    plot([pt1(1)  pt2(1)],[pt1(2) pt2(2)]);    
     %Equation de droite
-    if(pt2(1)~=pt1(1)&&pt1(2)~=pt2(2))
+    %{
+    if(pt2(1)~=pt1(1)||pt1(2)~=pt2(2))
         a=(pt2(2)-pt1(2))/(pt2(1)-pt1(1));  %coeff directeur
         b=pt1(2)-pt1(1)*a; %ordonnée à l'origine
         nx = abs(pt1(1)-pt2(1)); %distance en x entre les points
@@ -22,7 +24,7 @@ while k<dimPts(1) %les points sont déjà classés dans pts3D donc on trace un s
             x = round((y - b)/a);
         end
         %On trace les traits 
-        for i=1:1
+        for i=1:size(x,1)
             if x(i)>0 && x(i)<dimFrame(2) && y(i)>0 && y(i)<dimFrame(1) 
                 frame(y(i),x(i),1) = 220;
                 frame(y(i),x(i),2) = 20;
@@ -40,6 +42,7 @@ while k<dimPts(1) %les points sont déjà classés dans pts3D donc on trace un s
             end
         end
     end
+%}
     k=k+2; %+2 car on relie deux points ensemble
 end
 end
