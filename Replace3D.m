@@ -11,8 +11,8 @@ function [frame] = Replace3D(frame,pointsARelier,P,taille)
         x2=round(X2(1)/z);
         y2=round(X2(2)/z);
         if x2>0 && x2<size(frame,2) && y2>0 && y2<size(frame,1)
-            pts2D(i,1)=x2-taille(1)/6;
-            pts2D(i,2)=y2-taille(2)/6;
+            pts2D(i,1)=x2-taille(1)/2;
+            pts2D(i,2)=y2+3*taille(2)/5;
         end
     end
 
