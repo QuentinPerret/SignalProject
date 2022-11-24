@@ -1,8 +1,8 @@
-function [frame] = Replace3D(frame,pointsARelier,P)
+function [frame] = Replace3D(frame,pointsARelier,P,taille)
     
     %dimVid = size(frame);
     
-    pts3D = zeros(size(pointsARelier,1),2);
+    pts2D = zeros(size(pointsARelier,1),2);
 
     for i=1:size(pointsARelier,1)
         X1=[pointsARelier(i,1);pointsARelier(i,2);pointsARelier(i,3);1];
@@ -11,12 +11,12 @@ function [frame] = Replace3D(frame,pointsARelier,P)
         x2=round(X2(1)/z);
         y2=round(X2(2)/z);
         if x2>0 && x2<size(frame,2) && y2>0 && y2<size(frame,1)
-            pts3D(i,1)=x2;
-            pts3D(i,2)=y2;
+            pts2D(i,1)=x2-taille(1)/6;
+            pts2D(i,2)=y2-taille(2)/6;
         end
     end
 
-    frame=TraceBis(frame,pts3D);
+    frame=TraceTer(frame,pts2D);
     %faire appel à une fonction tracer(attention il faut mettre la
     %détection MAIN)
 

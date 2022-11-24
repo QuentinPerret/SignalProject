@@ -24,7 +24,7 @@ taille=size(meme);
 x2 = [1 taille(2) taille(2) 1 ]';
 y2 = [1 1 taille(1) taille(1) ]';
 %Feuille en 3 dimensions 
-P3D=[0 0 0; 0 taille(1) 0; taille(2) taille(1) 0; taille(2) 0 0; 3/8*taille(2) 1/2*taille(1) 0.2 ; 1/2*taille(2) 1/4*taille(1) 0.3];
+P3D=[-taille(2)/2 -taille(1)/2 0; -taille(2)/2 taille(1)/2 0; taille(2)/2 taille(1)/2 0; taille(2)/2 -taille(1)/2 0; -3/16*taille(2) 0 1 ; 0 0 3/2];
 
 %% Traitement de la vidéo
 
@@ -64,12 +64,12 @@ for i = 1:nbFrame
     %% Ajout  de la structure 3D
 
     %Projection 3D
-    [x,y,z]=Igloo(50);
+    [x,y,z]=Igloo(25,i);
     pointsARelier=RecuperePoints(x,y,z,taille/2);
     P=Projection3D(x1,y1,P3D,6);
 
     %Ajout de la structure
-    im=Replace3D(newim,pointsARelier,P);
+    im=Replace3D(newim,pointsARelier,P,taille);
     %% Verif
     Verification(im, coinsFrame, 6, writerObj);
 end
