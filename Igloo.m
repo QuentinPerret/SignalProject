@@ -1,10 +1,10 @@
-function [x,y,z] = Igloo(diametre,hauteur)
+function [x,y,z] = Igloo(diametre)
 %Fonction qui crée l'igloo et va dans la projection 3D->2D
-[X,Y]=meshgrid(1:2:diametre,1:2:hauteur);
+[X,Y]=meshgrid(1:2:diametre,1:2:diametre);
 tetha=(X./diametre)*2*pi;
-alpha=(Y./hauteur)*pi/2;
-x=diametre/2.*cos(tetha).*sin(alpha);
-y=diametre/2.*sin(tetha).*sin(alpha);
+alpha=(Y./diametre)*pi/2;
+x=diametre/2.*cos(tetha).*sin(alpha)+diametre/2;
+y=diametre/2.*sin(tetha).*sin(alpha)+diametre/2;
 z=diametre/2.*cos(alpha);
 %coordonnees=c(x,y,z);
 %hold on
