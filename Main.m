@@ -64,7 +64,7 @@ for i = 1:nbFrame
     %% Ajout  de la structure 3D
 
     %Projection 3D
-    [x,y,z]=Igloo(50,50);
+    [x,y,z]=Igloo(100,100);
     pointsARelier=RecuperePoints(x,y,z,taille);
     P=Projection3D(x1,y1,P3D,6);
 

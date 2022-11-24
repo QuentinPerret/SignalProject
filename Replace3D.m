@@ -16,7 +16,7 @@ function [frame] = Replace3D(frame,pointsARelier,P)
         end
     end
 
-    frame=TraceBis(frame,pts3D);
+    frame=TraceTer(frame,pts3D);
     %faire appel à une fonction tracer(attention il faut mettre la
     %détection MAIN)
 
