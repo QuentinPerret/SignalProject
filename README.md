@@ -18,4 +18,4 @@ de la feuille par une nouvelle image 2D, en prenant en compte la main présente 
 Enfin, nous nous sommes tous réunis pour travailler sur l’incrustation de contenu 3D.
 
 ## Collaborateurs
-Ce projet & été réalisé par les étudiants Dupont Clara , Maigrot Jeanne , Meunier Juliette , [Perret Quentin](https://github.com/QuentinPerret) et [Tavard Hugo](https://github.com/Croquignoles)
+Ce projet & été réalisé par les étudiants Dupont Clara , Maigrot Jeanne , [Meunier Juliette](https://github.com/juliettemnr) , [Perret Quentin](https://github.com/QuentinPerret) et [Tavard Hugo](https://github.com/Croquignoles)
