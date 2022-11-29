@@ -1,4 +1,5 @@
 function [frame] = Replace(frame,img,H)
+    %--- Renvoie une frame avec l'image voulue remplaçant la feuille
     
     dimVid = size(frame);
     dimIncr = size(img);
