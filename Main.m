@@ -39,7 +39,7 @@ for i = 1:nbFrame
     
     %--- MAJ des coins
     tmp = coinsFrame;
-    coinsFrame = detectCoin(HarrisFinal, coinsPreviousFrame, coinsFrame);
+    coinsFrame = DetectCoin(HarrisFinal, coinsPreviousFrame, coinsFrame);
     coinsPreviousFrame = tmp;
 
     %% Homographie
