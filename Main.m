@@ -60,10 +60,9 @@ for i = 1:nbFrame
     pointsARelier=RecuperePoints(x,y,z,taille/2);
     P=Projection3D(x1,y1,P3D,6);
 
-    %--- Ajout de la structure
-    im=Replace3D(newim,pointsARelier,P,taille);
-    %% Verif
-    Verification(im, coinsFrame, 6, writerObj);
+    %--- Ajout de la structure et verification
+    im=RemplaceVerif3D(newim,pointsARelier,P,writerObj,taille);
+
 end
 %--- Enregistrer la verif
 close(writerObj);
