@@ -17,5 +17,5 @@ tection des coins de la feuille. En parallèle, un trinôme était chargé de re
 de la feuille par une nouvelle image 2D, en prenant en compte la main présente sur la vidéo.
 Enfin, nous nous sommes tous réunis pour travailler sur l’incrustation de contenu 3D.
 
-## Colaborateurs
+## Collaborateurs
 Ce projet & été réalisé par les étudiants Dupont Clara , Maigrot Jeanne , Meunier Juliette , [Perret Quentin](https://github.com/QuentinPerret) et [Tavard Hugo](https://github.com/Croquignoles)
