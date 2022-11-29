@@ -8,6 +8,5 @@ for i=1:size(x,1)-1
         pointsARelier=[pointsARelier;x(i,j)*taille(2) y(i,j)*taille(1) z(i,j) ; x(i,j+1)*taille(2) y(i,j+1)*taille(1) z(i,j+1)];
     end
 end
-
 end
 
