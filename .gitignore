@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Windows default autosave extension
+*.asv
+
 # Object files
 *.o
 *.ko

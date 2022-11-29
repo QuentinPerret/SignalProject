@@ -6,18 +6,12 @@ alpha=(Y./diametre)*pi/2;
 x=diametre/2.*cos(tetha).*sin(alpha)+diametre/2;
 y=diametre/2.*sin(tetha).*sin(alpha)+diametre/2;
 z=diametre/2.*cos(alpha);
-for i=1:size(z,1)
-    for j=1:size(z,2)
-        z(i,j)=25-z(i,j);
-        x(i,j)=25-x(i,j);
-        y(i,j)=25-y(i,j);
+    for i=1:size(z,1)
+        for j=1:size(z,2)
+            z(i,j)=25-z(i,j);
+            x(i,j)=25-x(i,j);
+            y(i,j)=25-y(i,j);
+        end
     end
-end
-%coordonnees=c(x,y,z);
-%hold on
-%plot3(x,y,z);
-%plot3(x',y',z');
-%hold off;
-
 end
 
