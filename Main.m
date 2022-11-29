@@ -15,7 +15,7 @@ coinsPreviousFrame =  [686 413; 1339 238; 1426 580; 632 767; 1011 486; 1024 400]
 coinsFrame = coinsPreviousFrame;
 
 %% Image à remplacer
-banquise=imread('meme.jpg');
+banquise=imread('pingu.jpg');
 taille=size(banquise);
 x2 = [1 taille(2) taille(2) 1 ]'; %Données pour réaliser l'homographie
 y2 = [1 1 taille(1) taille(1) ]'; 
@@ -25,7 +25,7 @@ P3D=[-taille(2)/2 -taille(1)/2 0; -taille(2)/2 taille(1)/2 0; taille(2)/2 taille
 
 %% Traitement de la vidéo
 %--- Objet permettant de créer la vidéo sortante frame par frame.
-writerObj = VideoWriter('out.mp4'); 
+writerObj = VideoWriter('out'); 
  
 for i = 1:nbFrame
 
