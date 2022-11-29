@@ -1,4 +1,5 @@
 function [H] = Homographie (x1,y1,x2,y2,nbpts)
+%--- Renvoie la matrice homographique H
    
     A = zeros(nbpts*2,8);
     B = zeros(nbpts*2);
