@@ -198,10 +198,9 @@ x_2(3)&y_2(3)&1&0&0&0&-x_2(3)*x_1(3)&-x_1(3)*x_2(3)\\
 x_2(4)&y_2(4)&1&0&0&0&-x_2(4)*x_1(4)&-x_1(4)*x_2(4)\\ 
 0&0&0&x_2(4)&y_2(4)&1&-x_2(4)*y_1(4)&-y_2(4)*y_1(4)\\ 
 \end{pmatrix} $
-
+\vspace{0.5cm}
 
 Les coefficients de la matrice homographique X sont ensuite déterminés à l'aide de la relation suivante : 
-\\
 
  \begin{equation}
    A\times X=B \Leftrightarrow X=A^{-1}\times B
@@ -215,7 +214,7 @@ $H = \begin{pmatrix}X(1)&X(2)&X(3)\\
 X(4)&X(5)&X(6)\\ 
 X(7)&X(8)&1\\ 
 \end{pmatrix}$ 
-
+\vspace{0.5cm}
 
 Une fois cette matrice obtenue, l'homographie peut être réalisée en calculant le produit de convolution entre cette dernière et les coordonnées d'entrées. Afin de réaliser ce calcul, les coordonnées d'entrées doivent être homogènes d'où l'ajout d'un facteur d'échelle de 1. 
 Une fois l'homographie réalisée, les coordonnées obtenues sont homogènes à un nouveau facteur d'échelle résultant des calculs réalisés. Ainsi, pour obtenir les coordonnées de l'image à remplacer il faut diviser le résultat de cette homographie par ce nouveau facteur d'échelle. 
@@ -262,7 +261,7 @@ Afin d'implémenter un élément 3D, il faut tout d'abord le créer. Nous avions
 \]
 Avec $\rho$ est le rayon que l'on décide de donner à l'igloo, $\theta = \frac{n_i}{2\rho}\times 2\pi$ et $\alpha = \frac{n_j}{2\rho}\times\frac{\pi}{2}$. L'objectif est donc d'avoir les matrices x,y,z carrées de tailles $2\rho\times2\rho$ représentant les coordonnées des points composants l'igloo. 
 Pour être sûrs de la validité du modèle, nous avons tracé à l'aide de la fonction $plot3$ la demie-sphère. Une fois le modèle réalisé, il faut pouvoir passer de la 3D à la 2D. Pour ce faire, une matrice de projection $3D\longrightarrow2D$ fut construite dont le concept est similaire à l'homographie expliquée plus tôt, avec cette fois ci une quatrième colonne. Afin d'obtenir cette nouvelle matrice de projection, nous avons dans un premier temps déterminer les coordonnées d'entrées de la matrice A grâce au système suivant :
-
+\vspace{0.5cm}
 \[
 P = \begin{pmatrix}P_{11}&P_{12}&P_{13}&P_{14}\\
 P_{21}&P_{22}&P_{23}&P_{24}\\
@@ -276,9 +275,11 @@ P_{31}&P_{32}&P_{33}&P_{34}
 \end{array}
 \right .  
 \]
-
+\vspace{0.5cm}
 Ce système permet d'obtenir la matrice A suivante, en notant ($x_2(i),y_2(i),z_2(i)$) les coordonnées au point i de l'image à placer et ($x_1(i),y_1(i),z_1(i)$) les coordonnées correspondantes de la matrice homographique : \\
 \\
+\vspace{0.5cm}
+\hspace{-0.5cm}
 \setcounter{MaxMatrixCols}{11}
 $A = \begin{pmatrix}x_2(1)&y_2(1)&z_2(1)&1&0&0&0&0&-x2(1)*x1(1)&-x1(1)*x2(1)&-x_2(1)*z_2(1)\\ 
 0&0&0&0&x2(1)&y2(1)&z_2(1)&1&-x_2(1)*y_1(1)&-y_2(1)*y_1(1)&-y_2(1)*z_2(1)\\ 
@@ -291,7 +292,7 @@ x_2(4)&y2(4)&z_2(4)&1&0&0&0&0&-x_2(4)*x_1(4)&-x_1(4)*x_2(4)&-x_2(4)*z_2(4)\\
 x_2(5)&y2(5)&z_2(5)&1&0&0&0&0&-x_2(5)*x_1(5)&-x_1(5)*x_2(4)&-x_2(5)*z_2(5)\\ 
 0&0&0&0&x2(5)&y2(5)&z_2(5)&1&-x_2(5)*y_1(5)&-y_2(5)*y_1(5)&-y_2(5)*z_2(5)\\ 
 \end{pmatrix} $
-
+\vspace{0.5cm}
 
 Les coefficients de la matrice de projection P sont ensuite déterminés à l'aide de la relation suivante : 
 \\
@@ -308,7 +309,7 @@ $H = \begin{pmatrix}P(1)&P(2)&P(3)&P(4)\\
 P(5)&P(6)&P(7)&P(8)\\ 
 P(9)&P(10)&P(11)&1\\ 
 \end{pmatrix}$ 
-\\
+\vspace{0.5cm}
 
 Une fois cette matrice obtenue, la projection peut être réalisée en calculant le produit de convolution entre cette dernière et les coordonnées d'entrées. Afin de réaliser ce calcul, les coordonnées d'entrées doivent être homogènes d'où l'ajout d'un facteur d'échelle de 1. 
 Une fois la projection réalisée, les coordonnées x et y obtenues sont homogènes à un nouveau facteur d'échelle résultant des calculs réalisés. Ainsi, pour obtenir les coordonnées de l'image à remplacer il faut diviser le résultat de cette projection par ce nouveau facteur d'échelle.
@@ -337,18 +338,17 @@ Ci-dessous, il est présenté notre architecture de code avec le différentes fo
 \caption{Table des fonctions crées}
 \centering
 \rowcolors{1}{fgVeryLightRed}{}
-\begin{tabular}{m{4cm} m{2cm} m{2cm} m{6cm}}
+\begin{tabular}{m{3.5cm} m{3cm} m{1.5cm} m{6cm}}
 \hline
 \rowcolor{fgLightRed}
 \textbf{Nom Fonction} & \textbf{Entrée} & \textbf{Sortie} & \textbf{Description} \\
 \hline
 CouleurToGris& Image & & Permet de passer une image en vraies couleurs en couleurs indexées \\
 Canny & Image, sigma & $I_x$, $I_y$ & Estime les dérivées en tout point selon x et y \\
-Harris & sigma, sigmaG, image & detecteur & Calcul du détecteur de Harris combinant trace et matrice\\ 
-HarrisMultiEchelle& sigma1, sigma2, sigmaG, image & detecteurMulti& Détermine la valeur minimale du détecteur de Harris entre 2 valeurs de sigma \\
+Harris & sigma, sigmaG, image & detecteur & Calcul du détecteur de Harris combinant trace et déterminant\\ 
+HarrisMultiEchelle& sigma1, sigma2, sigmaG, image & detecteurMulti& Détermine le meilleur détecteur de Harris pour 2 valeurs de sigma \\
 ValMaxHarris & detecteur, posEncoreAvant,posAvant & posMax & Recherche de la valeur maximale du detecteur de Harris dans une fenêtre donnée \\
 DetectCoin & detecteur, coinsImage1,coinsImage2 & coins & Détermine les coordonnées des coins de la feuille\\
-VerifCoin & image,coins,video & & Affiche les coins obtenus sur l'image \\
 Homographie & x1,y1,x2,y2, nbpts & H & Calcule la matrice homographique à partir des coins de la feuille \\
 DetectMain & frame & M & Récupère les coordonnées de la feuille isolées de celles de la main à l'aide d'un seuillage dans le modèle YCbCr\\
 Replace & frame,img,H & frame & Remplace les pixels de la feuille par ceux de l'image à ajouter tout en conservant ceux de la main\\
@@ -356,11 +356,8 @@ Igloo & diametre,numeroFrame & x,y,z & Créer un igloo et renvoie les coordonné
 RecuperePoints & x,y,z, taille & pointsARelier & Renvoie les points à relier afin de tracer l'igloo\\
 Projection3D & x1,y1,P3D,nbpts & P & Calcule la matrice de projection permettant de passer des coordonnées 3D aux coordonnées 2D\\
 Trace & frame, pts3D & frame & Trace l'igloo sur la frame de la vidéo\\
-RemplaceVerif3D & frame, pointsARelier, P & frame & Ajoute la structure 3D à la frame de la vidéo \\
-Verification & image, coins, N, videoAvecCoins & & Affiche la frame de la vidéo modifée avec les coins\\
-
+RemplaceVerif3D & frame, pointsARelier, P & frame & Ajoute la structure 3D à la frame de la vidéo 
 %vérifier s'il manque des fonctions
-\hline
 \end{tabular}
 \label{tab:exemple1}
 \end{table}
@@ -451,7 +448,7 @@ im & Matrice de doubles & Image finale de la vidéo avec l'image incrustée et l
 
 \subsection{Détection des coins}
 
-Afin de vérifier que nous allions sur la bonne voie, nous avons vérifié nos résultats au fur et à mesure, notamment, avec le détecteur de Harris. Avant d'aller plus loin, nous avons afficher les différents détecteurs, ainsi que le détecteur multi-échelle (figure \ref{fig:subfigures2}). Nous pouvons voir les 4 coins de la feuille, de même que les structures 3D comme nous le souhaitions.
+Afin de vérifier que nous allions sur la bonne voie, nous avons vérifié nos résultats au fur et à mesure, notamment, avec le détecteur de Harris. Avant d'aller plus loin, nous avons affiché les différents détecteurs, ainsi que le détecteur multi-échelle (figure \ref{fig:subfigures2}). Nous pouvons voir les 4 coins de la feuille, de même que les structures 3D comme nous le souhaitions.
 
 \begin{figure}[H]
 \centering
@@ -487,16 +484,16 @@ Nous avons ensuite vérifié si suite à la prédiction linéaire, les coins ét
 \end{figure}
 
 
-Pour ajouter de la stabilité, nous avons ajouté deux points en plus, comme l'on peut le voir sur la figure \ref{fig:coin2}.
+Pour ajouter de la stabilité pour l'homographie, nous avons rajouté un point au centre de la feuille, comme l'on peut le voir sur la figure \ref{fig:coin2}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{images/signal2.png}
-\caption[coin2]{Capture d'écran d'une image de la vidéo avec les 5 coins détectés}
+\caption[coin2]{Capture d'écran d'une image de la vidéo avec les 4 coins détectés et un point central}
 \label{fig:coin2}
 \end{figure}
 
-Enfin, en terme de temps d'exécution, le programme met 401.910374 secondes. Ce temps long est dû à la boucle principale, qui va venir écrire les coins à chaque frame de l'image. Pour l'améliorer, nous aurions pu essayer de ?(bonne question).
+Des améliorations sont possible pour la détection de coin, notamment en se concentrant sur le seuil ou bien la fenêtre de repérage du maximum dans le détecteur de Harris.
 
 \subsection{Homographie}
 % test sur une frame, en indiquant les coins à la main (ginput)
@@ -505,7 +502,7 @@ Enfin, en terme de temps d'exécution, le programme met 401.910374 secondes. Ce 
 % ensuite quand on a eu la partie détections des points on a vu que c'etait pas hyper stable avec seulement nos 4 coins
 % --> ajout de deux autres points pour plus de stabilité
 
-Afin de tester le bon fonctionnement de notre fonction homographique nous l'avons testée à de nombreuses reprises, en indiquant les coins de la feuille "à la main" puisque la partie "détection des coins" n'était pas encore achevée. Nous avons pour cela utilisé la fonction \textit{ginput} de Matlab. En appliquant notre homographie à la première frame de la vidéo nous avons pu observer un résultat satisfaisant (cf figure \ref{fig:homographie1}).
+Afin de s'assurer du bon fonctionnement de notre fonction homographique nous l'avons testée à de nombreuses reprises, en indiquant les coins de la feuille "à la main" puisque la partie "détection des coins" n'était pas encore achevée. Nous avons pour cela utilisé la fonction \textit{ginput} de Matlab. En appliquant notre homographie à la première frame de la vidéo nous avons pu observer un résultat satisfaisant (cf figure \ref{fig:homographie1}).
 
 \begin{figure}[H]
 \centering
@@ -531,19 +528,30 @@ Enfin, lorsque nous avons eu la fonction de détection des coins, nous avons pu 
 \caption[homographie3]{Capture d'écran de la quarantième frame de la vidéo avec l'image ajoutée à partir de 5 points}
 \label{fig:homographie2}
 \end{figure}
-% le temps d'execution est ; 1128.8125
-% temps d'execution total : 1074.4688
 
-% 2eme tentative :
-% le temps d'execution est ; 1082.9531
-% le temps d'execution total est ; 1039.0625
 
 
 \subsection{Élément 3D}
 
 A l'aide du modèle de l'igloo et de la fonction $Projection3D$ nous pouvons désormais obtenir les coordonnées $2D$ des points de la demie-sphère. La fonction $Replace3D$, de concert avec la fonction $Trace$ permettent de tracer sur les images de la vidéo l'igloo. 
 Cependant, une difficulté subsiste, comment savoir quel point relier avec quel point pour en tracer le segment ? 
-Pour y répondre, nous avons du nous renseigner sur l'indexation par défaut que $Matlab$ effectue sur ses matrices. Avec ces informations, nous savons désormais que chaque point doit être relié à celui du dessous mais aussi à celui de la colonne de droite (quant à la dernière colonne, elle doit être reliée à la première pour fermer la demie sphère). Ainsi, en sortie de la fonction $Igloo$, nous faisons appel à la fonction $RecuperePoints$ qui se charge de classer les points dans l'ordre dans une matrice de taille $Nombre de points \times 3$ (3 pour x,y,z), qui sera plus facile à traiter pour les fonction graphiques. 
+Pour y répondre, nous avons du nous renseigner sur l'indexation par défaut que $Matlab$ effectue sur ses matrices. Avec ces informations, nous savons désormais que chaque point doit être relié à celui du dessous mais aussi à celui de la colonne de droite (quant à la dernière colonne, elle doit être reliée à la première pour fermer la demie sphère). Ainsi, en sortie de la fonction $Igloo$, nous faisons appel à la fonction $RecuperePoints$ qui se charge de classer les points dans l'ordre dans une matrice de taille $Nombre de points \times 3$ (3 pour x,y,z), qui sera plus facile à traiter pour les fonctions graphiques. La position de l'igloo a été choisie arbitrairement. Les images ainsi obtenues sont les suivantes : 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{images/proj3D_1.png}
+\caption[proj3D1]{Capture d'écran de la première frame de la vidéo avec l'image et l'élément 3D ajoutée}
+\label{fig:uapv}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.3]{images/proj3D_2.png}
+\caption[proj3D2]{Capture d'écran de la quarantième frame de la vidéo avec l'image et l'élément 3D ajoutée}
+\label{fig:uapv}
+\end{figure}
+
+Finalement le temps d'exécution total est de 305,10 secondes. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Organisation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -556,36 +564,38 @@ Comme indiqué dès la première séance de travail,  nous nous sommes divisés 
  \ref{fig:uapv}). Et un deuxième trinôme composé de Clara Dupont, Jeanne Maigrot et Quentin Perret était chargé d'effectuer l'homographie afin de pouvoir remplacer l'image et identifier la main (en jaune sur la figure  \ref{fig:uapv}).
 \\
 
-Nous avons mis ensuite en commun nos deux codes afin d'avoir de pouvoir commencer la troisième partie, l'ajout d'une figure 3D. Pour cette dernière partie, nous avons redivisé le travail en deux : il fallait commencer par rendre la détection des coins plus robustes. Et d'autre part, adapter la fonction homographie pour faire une fonction de projection 3D. Enfin, nous nous sommes réunis pour la dernière étape pour commencer d'une part le rapport et d'autre part, ajouter la figure 3D choisi, un igloo.
+Nous avons mis ensuite en commun nos deux codes afin de pouvoir commencer la troisième partie, l'ajout d'une figure 3D. Pour cette dernière partie, nous avons redivisé le travail en deux : il fallait commencer par rendre la détection des coins plus robuste mais aussi adapter la fonction homographie pour faire une fonction de projection 3D. Enfin, nous nous sommes réunis pour la dernière étape en vue de commencer d'une part le rapport et d'autre part, ajouter la figure 3D choisie, un igloo.
 \\
 
-Nous avons principalement utilisé les plages de TD pour travailler où nous avons pu avancer par binôme ou trinôme, mais en se tenant au courant des avancées de l'autre équipe.
+Nous avons utilisé à notre avantage les plages de TD pour travailler où nous avons pu avancer par binôme ou trinôme, mais en se tenant au courant des progrès de l'autre équipe. Cependant, un large travail personnel fut nécessaire pour terminer ce projet à temps.  
 
-\begin{figure}[htb!]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.15]{images/Planning.png}
-\caption[planning]{Planning de la répartition du travail (rose : tout le groupe, violet : binôme 1 et jaune : trinôme2)}
+\caption[planning]{}
 \label{fig:uapv}
 \end{figure}
 
 \subsection{Outils utilisés}
-Comme le projet était à réaliser sur Matlab, nous avons bien entendu utiliser le langage Matlab. Pour pouvoir partager nos avancées et versionner notre code, nous avons utilisé GitHub.
-Enfin, pour le rapport, nous avons utilisé \LaTeX  pour pouvoir écrire les équations mathématiques de manière plus facile.
-Enfin, afin de s'organiser, pour notamment la rédaction du rapport et la finalsation du code, nous avons communiqué par Messenger.
+Comme le projet est à réaliser sur Matlab, nous avons bien entendu utilisé le langage Matlab. Pour pouvoir partager nos avancées et versionner notre code, nous avons placé Git à l'honneur.
+Enfin, pour le rapport, nous avons utilisé \LaTeX  pour pouvoir écrire les équations mathématiques de manière plus facile, pratique et pour que leur police soit plus agréable à lire.
+Enfin, afin de s'organiser, notamment en ce qui concerne la rédaction du rapport et la finalisation du code, nous avons communiqué par Messenger.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Conclusion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
-Ce projet a été l'occasion de mettre en pratique les approches théoriques vues lors des cours et à à maîtriser le logiciel Matlab. Le fait de coder nous-même les fonctions nécessaires au remplacement d'une image a en effet nous a permis d'avoir une compréhension concrète et technique de ce dernier.
-Durant ce projet, plusieurs difficultés ont pu être rencontrées pour la réalisation des différentes étapes que ce soit en termes d'approches ou de réalisation. Cependant, ces difficultés ont pu être surmontées et elles ne nous ont pas empêchées d'obtenir des résultats satisfaisants : les coins de l'image ont pu être détecter afin de pouvoir remplacer la feuille par une image sans écraser la main. Concernant l'ajout de contenu 3D, nous avons réussi à ajouter une structure d'igloo tournant en 3D même si nous n'avons pas réussi à réaliser parfaitement ce que l'on souhaitait. Ainsi, nous sommes satisfaits du travail que nous avons réalisé qui est fonctionnel et qui correspond aux attentes du projet. %je sais pas s'il faut vraiment le dire comme ça mdr
+Ce projet a été l'occasion de mettre en pratique les approches théoriques vues lors des cours et de d'approfondir notre maîtrise du logiciel Matlab. Le fait de coder nous-même les fonctions nécessaires au remplacement d'une image nous plus particulièrement permis d'avoir une compréhension plus concrète et technique de ce dernier. De même en ce qui concerne le cours, certains points d'ombre ont pu être éclaircis de par les attentes du projet. 
+Durant ce dernier, plusieurs difficultés ont pu être rencontrées pour la réalisation des différentes étapes que ce soit en termes d'approche ou de réalisation. Cependant, ces difficultés ont pu être surmontées et elles ne nous ont pas empêchées d'obtenir des résultats satisfaisants : les coins de l'image ont pu être détectés afin de pouvoir remplacer la feuille par une image sans écraser la main. Concernant l'ajout de contenu 3D, nous avons réussi à ajouter une structure d'igloo rotatif en 3D même si nous n'avons pas réussi à réaliser parfaitement ce que l'on souhaitait. Néanmoins, le code est fonctionnel, et le groupe reste satisfait du travail effectué.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Réalisation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Annexe}
-Notre code se trouve sur le lien GitHub suivant : \url{https://github.com/QuentinPerret/SignalProject.git}.
+Notre code se trouve sur le dépôt GitHub suivant : 
+
+\url{https://github.com/QuentinPerret/SignalProject.git}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliographie

@@ -1,6 +1,6 @@
 clear
 close all
-
+tic
 %% Récupération de la vidéo
 video=VideoReader('Video_Sujet.mp4'); %ouverture vidéo
 % Nombre d'images dans la vidéo
@@ -66,5 +66,5 @@ for i = 1:nbFrame
 end
 %--- Enregistrer la verif
 close(writerObj);
-
+toc
 
