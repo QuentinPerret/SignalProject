@@ -25,7 +25,7 @@ P3D=[-taille(2)/2 -taille(1)/2 0; -taille(2)/2 taille(1)/2 0; taille(2)/2 taille
 
 %% Traitement de la vidéo
 %--- Objet permettant de créer la vidéo sortante frame par frame.
-writerObj = VideoWriter('out.mp4'); 
+writerObj = VideoWriter('out'); 
  
 for i = 1:nbFrame
 

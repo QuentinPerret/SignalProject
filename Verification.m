@@ -5,7 +5,7 @@ function [] = Verification(image, coins, N, videoAvecCoins)
     hold on;
     % Affichage des coins
     for i = 1:N    
-        plot(coins(i,1) , coins(i,2), 'g+', 'MarkerSize', 10, 'LineWidth', 2);    
+        %plot(coins(i,1) , coins(i,2), 'g+', 'MarkerSize', 10, 'LineWidth', 2);    
     end
     hold off;
     % Ajout de l'image sur la vidéo
